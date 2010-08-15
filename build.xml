@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Mango.Gists" default="compile">
+	
+	<!-- update build properties -->
+	<propertyfile file="buildprops/build.properties">
+		<entry key="build.number" type="int" operation="+" value="1" pattern="00"/>
+		<entry key="build.date" type="date" pattern="EEEE MMM dd, yyyy" value="now"/>
+		<entry key="build.time" type="date" pattern="kk:mm:ss" value="now"/>
+		<entry key="build.timestamp" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss" value="now"/>
+		<entry key="build.year" type="date" pattern="yyyy" value="now"/>
+	</propertyfile>	
+		
+	<!-- build properties -->	
+	<property file="buildprops/build.properties"/>
+	<property file="buildprops/project.properties"/>
+
+	<property name="tmpdir" value="${java.io.tmpdir}/${build.projectName}/" />	
+		
+	<target name="deploy">
+		
+		<mkdir dir="${tmpdir}/gists" />	
+		
+		<echo message="Copy to temp"/>		
+		<copy todir="${tmpdir}/gists">
+			<fileset dir="${basedir}/gists/"/>
+			<fileset dir="${basedir}/templates/"/>
+		</copy>
+
+		<echo message="Replacing properties "/>		
+		
+		<replace dir="${tmpdir}">
+			<replacefilter token="@number" value="${build.number}"/>
+			<replacefilter token="@projectName" value="${build.projectName}"/>
+			<replacefilter token="@date" value="${build.date}"/>
+			<replacefilter token="@projectUrl" value="${build.projectUrl}"/>
+			<replacefilter token="@projectVersion" value="${build.projectVersion}"/>
+			<replacefilter token="@authorEmail" value="${build.authorEmail}"/>
+			<replacefilter token="@author" value="${build.author}"/>
+			<replacefilter token="@year" value="${build.year}"/>
+		</replace>
+
+		<zip destfile="${basedir}/bin/com.andreacfm.mango.gists_${build.projectVersion}.zip">
+			<fileset dir="${tmpdir}"/>
+		</zip>
+		
+		<delete dir="${tmpdir}"/>	
+
+	</target>
+		
+		
+	<target 
+		name="compile" 
+		depends="deploy" />
+	
+
+</project>
+
+
+
+
