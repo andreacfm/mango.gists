@@ -1,7 +1,7 @@
 <cfscript>
 component{
 	
-	this.mappings["/app"] = expandPath('/mangoGists');
+	this.mappings["/app"] = expandPath('/MangoGists');
 	
 }
 </cfscript>

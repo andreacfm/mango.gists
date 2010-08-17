@@ -39,7 +39,7 @@
 			<replacefilter token="@year" value="${build.year}"/>
 		</replace>
 
-		<zip destfile="${basedir}/build/com.andreacfm.mango.gists_${build.projectVersion}.zip">
+		<zip destfile="${basedir}/build/com.andreacfm.mango.gists.zip">
 			<fileset dir="${tmpdir}"/>
 		</zip>
 		

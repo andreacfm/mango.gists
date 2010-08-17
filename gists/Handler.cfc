@@ -29,18 +29,11 @@
 		<cfset var ev = arguments.event />
 		<cfset var eventname = ev.name />
 		
-		<cfswitch expression="#eventname#">
-			
-			<cfcase value="beforePostContentEnd">
-				
-				<cfset var currentpost = event.getData().context.currentpost>
-				<cfset var body = currentpost.getContent() />
-				<cfset body = handleGists(body)>				
-				<cfset currentpost.setContent(body)>
-			
-			</cfcase>
-		
-		</cfswitch>	
+
+		<cfif eventName EQ "postGetContent" OR eventName EQ "pageGetContent">
+			<cfset data = arguments.event.accessObject />
+			<cfset data.content = handleGists(data.content) />		
+		</cfif>	
 					
         <cfreturn arguments.event /> 
     </cffunction> 
