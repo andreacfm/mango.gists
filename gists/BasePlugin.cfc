@@ -8,6 +8,7 @@
 	<cffunction name="setManager" access="public" output="false" returntype="void">
 		<cfargument name="mainManager" type="any" required="true" />
 		<cfset variables.mainManager = arguments.mainManager />
+		</cfdirectory>
 	</cffunction>
 	
 <!--- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: --->	

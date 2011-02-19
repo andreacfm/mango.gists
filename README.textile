@@ -1,0 +1,10 @@
+h2. Gists Plugin for MangoBlog
+
+p. Use the following syntax:
+
+p. *[gist:{id of your gists}:{filename if your gist contains more files}]*
+
+p. Example:
+
+* [gist:123456]
+ * [gist:123456:my file name]
