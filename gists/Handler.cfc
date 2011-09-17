@@ -46,7 +46,7 @@
 		<cfset var js = "">		
 		<cfset var match = refindnocase("\[.*?\]",content,1,true)>
 		
-		<cfloop condition="#match.len[1] gt 0#">
+		<cfloop condition="match.len[1] gt 0">
 			<cfset var item = mid(content,match.pos[1],match.len[1])>
 			
 			<!--- is a gist ? --->
